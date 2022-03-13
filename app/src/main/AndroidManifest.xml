@@ -10,10 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NASAMedia">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.NASAMedia.NoActionBar">
+            android:theme="@style/Theme.NASAMedia">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

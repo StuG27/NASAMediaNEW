@@ -1,12 +1,10 @@
 package com.volynkin.nasamedia.ui
 
-
-import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.volynkin.nasaimageandvideolibrary.databinding.ActivityMainBinding
+import com.volynkin.nasamedia.databinding.ActivityMainBinding
 
-
-class MainActivity: Activity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
