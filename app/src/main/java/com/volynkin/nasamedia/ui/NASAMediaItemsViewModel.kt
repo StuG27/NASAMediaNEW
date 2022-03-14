@@ -11,7 +11,6 @@ import com.volynkin.nasamedia.domain.usecases.GetNasaMediaItemsUseCase
 import com.volynkin.nasamedia.domain.usecases.RemoveItemFromFavoritesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,12 +25,6 @@ class NASAMediaItemsViewModel @Inject constructor(
         const val TAG = "NASAMediaItemsViewModel"
     }
 
-    init {
-        viewModelScope.launch {
-            getNasaMediaItemsUseCase.invoke("w")
-        }
-    }
-
     private val localDataLoading = MutableLiveData(true)
     val dataLoading: LiveData<Boolean> = localDataLoading
 
@@ -44,7 +37,6 @@ class NASAMediaItemsViewModel @Inject constructor(
     private val _remoteItems = arrayListOf<NASAMediaItem>()
 
     fun getNasaMediaItems(keyWord: String) {
-        Timber.tag(TAG).e("getNasaMediaItems")
         viewModelScope.launch {
             localDataLoading.postValue(true)
             val itemsResult = getNasaMediaItemsUseCase.invoke(keyWord)
@@ -60,19 +52,16 @@ class NASAMediaItemsViewModel @Inject constructor(
     }
 
     suspend fun addItemToFavorites(item: NASAMediaItem) {
-        Timber.tag(TAG).e("addItemToFavorites")
         addItemToFavoritesUseCase.invoke(item)
     }
 
     suspend fun removeItemFromFavorites(item: NASAMediaItem) {
-        Timber.tag(TAG).e("removeItemToFavorites")
         viewModelScope.launch {
             removeItemFromFavoritesUseCase.invoke(item)
         }
     }
 
     suspend fun getFavoritesNasaMediaItems() {
-        Timber.tag(TAG).e("getFavoritesNasaMediaItems")
         viewModelScope.launch {
             getFavoritesNasaMediaItemsUseCase.invoke()
         }

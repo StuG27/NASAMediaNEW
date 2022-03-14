@@ -1,6 +1,7 @@
 package com.volynkin.nasamedia.di
 
 import android.content.Context
+import android.util.Log
 import com.volynkin.nasamedia.data.api.NASAMediaItemsResponseMapper
 import com.volynkin.nasamedia.data.api.NASAMediaService
 import com.volynkin.nasamedia.data.db.NASAMediaDatabase
@@ -21,7 +22,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import timber.log.Timber
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -103,7 +103,7 @@ object NASAMediaModule {
     @Singleton
     fun provideHttpLoggingInterceptor(): Interceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor { message ->
-            Timber.tag("OkHttp").i(message)
+            Log.e("httpLoggingInterceptor", message)
         }
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
         return httpLoggingInterceptor
