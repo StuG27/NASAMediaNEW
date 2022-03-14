@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.volynkin.nasamedia.R
 import com.volynkin.nasamedia.databinding.FragmentSearchBinding
+import timber.log.Timber
 
 class SearchFragment : Fragment() {
 
@@ -24,6 +25,7 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Timber.tag(TAG).e("onCreateView")
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentSearchBinding.inflate(inflater)
         return binding.root
@@ -41,6 +43,7 @@ class SearchFragment : Fragment() {
         (searchItem.actionView as SearchView).setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                Timber.tag(TAG).e("query = $query")
                 if (query != null) {
                     itemsViewModel.getNasaMediaItems(query)
                 }

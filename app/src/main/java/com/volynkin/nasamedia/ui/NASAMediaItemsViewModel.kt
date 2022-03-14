@@ -26,10 +26,16 @@ class NASAMediaItemsViewModel @Inject constructor(
         const val TAG = "NASAMediaItemsViewModel"
     }
 
+    init {
+        viewModelScope.launch {
+            getNasaMediaItemsUseCase.invoke("w")
+        }
+    }
+
     private val localDataLoading = MutableLiveData(true)
     val dataLoading: LiveData<Boolean> = localDataLoading
 
-    private val localItems = MutableLiveData<List<BookWithStatus>>()
+    private val localItems = MutableLiveData<List<String>>()
     val items = localItems
 
     private val _error = MutableLiveData<String>()
