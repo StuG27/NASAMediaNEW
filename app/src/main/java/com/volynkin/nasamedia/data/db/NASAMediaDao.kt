@@ -11,7 +11,7 @@ interface NASAMediaDao {
     suspend fun saveNASAMediaItem(remoteNASAMediaItem: RemoteNASAMediaItem)
 
     @Query("SELECT * FROM `remoteNASAMediaItem`")
-    suspend fun getSavedNASAMediaItems(): Flow<List<RemoteNASAMediaItem>>
+    fun getSavedNASAMediaItems(): Flow<List<RemoteNASAMediaItem>>
 
     @Delete
     suspend fun deleteNASAMediaItem(remoteNASAMediaItem: RemoteNASAMediaItem)

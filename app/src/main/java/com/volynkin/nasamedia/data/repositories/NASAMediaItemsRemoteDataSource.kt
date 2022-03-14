@@ -4,5 +4,5 @@ import com.volynkin.nasamedia.domain.entities.NASAMediaItem
 
 
 interface NASAMediaItemsRemoteDataSource {
-    suspend fun getNASAMediaItems(keyWords: String?): Result<List<NASAMediaItem>>
+    suspend fun getNASAMediaItems(keyWord: String): Result<List<NASAMediaItem>>
 }

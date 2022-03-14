@@ -20,5 +20,4 @@ class NASAMediaItemsViewModel @Inject constructor(
         const val TAG = "NASAMediaItemsViewModel"
     }
 
-
 }
