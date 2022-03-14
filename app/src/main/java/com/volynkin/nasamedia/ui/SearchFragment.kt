@@ -17,7 +17,7 @@ class SearchFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentSearchBinding
-    private val NASAMediaItemsviewModel: NASAMediaItemsViewModel by activityViewModels()
+    private val itemsViewModel: NASAMediaItemsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +41,9 @@ class SearchFragment : Fragment() {
         (searchItem.actionView as SearchView).setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    itemsViewModel.getNasaMediaItems(query)
+                }
                 return true
             }
 

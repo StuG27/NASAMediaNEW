@@ -4,7 +4,7 @@ import com.volynkin.nasamedia.domain.entities.NASAMediaItem
 import com.volynkin.nasamedia.domain.repositories.NASAMediaItemsRepository
 import javax.inject.Inject
 
-class RemoveItemToFavoritesUseCase @Inject constructor(private val NASAMediaItemRepository: NASAMediaItemsRepository) {
+class RemoveItemFromFavoritesUseCase @Inject constructor(private val NASAMediaItemRepository: NASAMediaItemsRepository) {
     suspend operator fun invoke(NASAMediaItem: NASAMediaItem) =
         NASAMediaItemRepository.removeFromFavorites(NASAMediaItem)
 }

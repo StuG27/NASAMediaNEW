@@ -10,7 +10,7 @@ import com.volynkin.nasamedia.domain.repositories.NASAMediaItemsRepository
 import com.volynkin.nasamedia.domain.usecases.AddItemToFavoritesUseCase
 import com.volynkin.nasamedia.domain.usecases.GetFavoritesNasaMediaItemsUseCase
 import com.volynkin.nasamedia.domain.usecases.GetNasaMediaItemsUseCase
-import com.volynkin.nasamedia.domain.usecases.RemoveItemToFavoritesUseCase
+import com.volynkin.nasamedia.domain.usecases.RemoveItemFromFavoritesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -78,8 +78,8 @@ object NASAMediaModule {
 
     @Provides
     @Singleton
-    fun provideRemoveItemToFavoritesUseCase(repository: NASAMediaItemsRepository): RemoveItemToFavoritesUseCase {
-        return RemoveItemToFavoritesUseCase(repository)
+    fun provideRemoveItemFromFavoritesUseCase(repository: NASAMediaItemsRepository): RemoveItemFromFavoritesUseCase {
+        return RemoveItemFromFavoritesUseCase(repository)
     }
 
     @Provides
